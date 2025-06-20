@@ -9310,3 +9310,6 @@ def wasm_opt : Flag<["--"], "wasm-opt">,
   Group<m_Group>,
   HelpText<"Enable the wasm-opt optimizer (default)">,
   MarshallingInfoNegativeFlag<LangOpts<"NoWasmOpt">>;
+def function_cycle_count : Flag<["-"], "function-cycle-count">,
+  HelpText<"Enable function cycle count analysis and reporting">,
+  Visibility<[CC1Option]>;

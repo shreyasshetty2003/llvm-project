@@ -5,7 +5,7 @@
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 //
 //===----------------------------------------------------------------------===//
-
+#include "llvm/Transforms/Utils/FunctionCycleCount.h"
 #include "clang/CodeGen/BackendUtil.h"
 #include "BackendConsumer.h"
 #include "LinkInModulesPass.h"
@@ -1013,7 +1013,7 @@ void EmitAssemblyHelper::RunOptimizationPipeline(
   // Add a verifier pass, before any other passes, to catch CodeGen issues.
   if (CodeGenOpts.VerifyModule)
     MPM.addPass(VerifierPass());
-
+      MPM.addPass(FunctionCycleCountPass());
   if (!CodeGenOpts.DisableLLVMPasses) {
     // Map our optimization levels into one of the distinct levels used to
     // configure the pipeline.

@@ -1857,7 +1857,7 @@ bool CompilerInvocation::ParseCodeGenArgs(CodeGenOptions &Opts, ArgList &Args,
     OptimizationLevel = MaxOptLevel;
   }
   Opts.OptimizationLevel = OptimizationLevel;
-
+  Opts.FunctionCycleCount = Args.hasArg(OPT_function_cycle_count);
   // The key paths of codegen options defined in Options.td start with
   // "CodeGenOpts.". Let's provide the expected variable name and type.
   CodeGenOptions &CodeGenOpts = Opts;
@@ -3032,6 +3032,7 @@ static bool ParseFrontendArgs(FrontendOptions &Opts, ArgList &Args,
         ProgramAction = frontend::ParseSyntaxOnly;
       }
     }
+    
 
     Opts.ProgramAction = *ProgramAction;
 

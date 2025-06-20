@@ -5080,7 +5080,9 @@ void Clang::ConstructJob(Compilation &C, const JobAction &JA,
       CmdArgs.push_back("-sycl-std=2020");
     }
   }
-
+  if (Args.hasArg(options::OPT_function_cycle_count)) {
+    CmdArgs.push_back("-function-cycle-count");
+  }
   if (Args.hasArg(options::OPT_fclangir))
     CmdArgs.push_back("-fclangir");
 
